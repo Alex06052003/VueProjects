@@ -1,0 +1,36 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
+    <script src="js/index.js" defer></script>
+</head>
+
+<body>
+
+    <div id="app" class="ui container">
+        <h1>Notification Center</h1>
+
+        <!-- Notification Message Markup -->
+        <!-- Types: info, warning, error, success -->
+        <notification-message :type="item.type" :header="item.header" v-for="(item, index) in typHead">
+            <p>Go to the <b>special offers</b> page to see now.</p>
+        </notification-message>
+
+    </div>
+
+    <!-- Template for Notification Message -->
+    <script type="text/x-template" id="notification-message-template">
+        <div class="ui message" :class="type" v-if="!hidden">
+            <i class="close icon" @click="mesClose"></i>
+            <div class="header">
+                {{ header }}
+            </div>
+            <slot></slot>
+        </div>
+    </script>
+
+    <!-- Import Vue.js -->
+    <script src="https://unpkg.com/vue@3"></script>
+</body>
+
+</html>
